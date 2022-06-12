@@ -36,8 +36,10 @@ app.use(cors())
 
 app.post('/test', (req, res, next) => {
     const { payload } = req.body
-    const { hello, bye } = JSON.parse(payload)
-    console.log('bye: ', bye)
+    const useableData = JSON.parse(payload)
+        // or destructured...
+        // const { hello, bye } = JSON.parse(payload)
+    console.log(useableData)
     res.send({ success: true })
 })
 
