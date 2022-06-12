@@ -35,8 +35,9 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.post('/test', (req, res, next) => {
-    const data = req.body
-    console.log('req: ', data)
+    const { payload } = req.body
+    const { hello, bye } = JSON.parse(payload)
+    console.log('bye: ', bye)
     res.send({ success: true })
 })
 
