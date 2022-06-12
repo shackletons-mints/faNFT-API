@@ -30,11 +30,13 @@ app.post('/post-fan/{metadata}{walletAddress}', (req, res) => {
     // pinJSONToIPFS(process.env.PINATA_API_KEY, process.env.PINATA_SECRET_API_KEY, nftMetadata)
 })
 
-app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(cors())
 
-app.post('/test', (req, res) => {
-    console.log('req: ', req.body)
+app.post('/test', (req, res, next) => {
+    const data = req.body
+    console.log('req: ', data)
     res.send({ success: true })
 })
 
