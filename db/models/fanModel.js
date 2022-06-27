@@ -1,7 +1,8 @@
 const mongoose = require('../')
 
 const schema = {
-    cid: { type: mongoose.SchemaTypes.String, required: true },
+    cidMetadata: { type: mongoose.SchemaTypes.String, required: true },
+    cidAsset: { type: mongoose.SchemaTypes.String, required: true },
     title: { type: mongoose.SchemaTypes.String, required: true },
     owner: { type: mongoose.SchemaTypes.String, },
 }

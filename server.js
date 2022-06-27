@@ -23,11 +23,37 @@ app.use(cors({
 }))
 
 // ROUTES
+
+// CHANGE NAME
 app.get('/get-fan', async (req, res) => {
     try {
         const cid = req.query.cid
 
         const result = await Fan.findOne({ cid }).exec()
+
+        return res.json(result)
+    } catch (error) {
+        console.error(error)
+    }
+})
+
+app.get('/get-paginated-fans', async (req, res) => {
+    try {
+        const page = req.query.page
+
+        const paddedHexes = []
+        const firstFan = (page * 5) - 4
+
+        for (let i = 0; i < 4; i++) {
+            const fanIndex = (firstFan + i).toString()
+            const paddedHex = ("0000000000000000000000000000000000000000000000000000000000000000" + fanIndex).substr(-64)
+
+            paddedHexes.push(paddedHex)    
+        }
+        
+        // TODO
+            // can we make one query?
+        const result = await Fan.findOne({ paddedHex }).exec()
 
         return res.json(result)
     } catch (error) {
