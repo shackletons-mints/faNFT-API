@@ -68,20 +68,10 @@ app.put("/put-fan", async (req, res) => {
     }
 })
 
-// payload = {
-//     uri: "https://bafybeiad4cjnorjvotfqx737c2aha2fuvg2rfo6bznio22vbw6iyuyqs7y.ipfs.nftstorage.link/0000000000000000000000000000000000000000000000000000000000000001.json",
-//     owner: "0xEB1e4Ff457D42B795edF00333Bb1d519fb423a72"
+// TEST PAYLOAD
+// {
+//     "payload" = {
+//         "uri": "https://bafybeiad4cjnorjvotfqx737c2aha2fuvg2rfo6bznio22vbw6iyuyqs7y.ipfs.nftstorage.link/0000000000000000000000000000000000000000000000000000000000000001.json",
+//         "owner": "0xEB1e4Ff457D42B795edF00333Bb1d519fb423a72"
+//     }
 // }
-
-app.post('/test', (req, res, next) => {
-    const { payload } = req.body
-    const useableData = JSON.parse(payload)
-        // or destructured...
-        // const { hello, bye } = JSON.parse(payload)
-    console.log(useableData)
-    res.send({ success: true })
-})
-
-app.listen(PORT, () =>  {
-    console.log('Listening on port ' + PORT)
-})
