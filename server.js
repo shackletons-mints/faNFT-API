@@ -25,9 +25,9 @@ app.use(cors({
 // ROUTES
 app.get('/get-fan', async (req, res) => {
     try {
-        const cid = req.query.cid
+        const uri = req.query.uri
 
-        const result = await Fan.findOne({ cid }).exec()
+        const result = await Fan.findOne({ uri }).exec()
 
         return res.json(result)
     } catch (error) {
