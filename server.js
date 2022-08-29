@@ -35,19 +35,19 @@ app.get('/get-fan', async (req, res) => {
     }
 })
 
-app.post('/post-fan/{metadata}{walletAddress}', (req, res) => {
-    /**
-     * imaginary database
-     * 
-     *  fan {
-     *      cid,
-     *      title,
-     *      owner: walletAddress
-     *  }
-     * 
-     */
+app.get('/get-paginated-fans', async (req, res) => {
+    try {
+        const { start, end } = req.query
 
-    // pinJSONToIPFS(process.env.PINATA_API_KEY, process.env.PINATA_SECRET_API_KEY, nftMetadata)
+        const allFans = await Fan.find({})
+
+        const selectedFans = allFans.slice(start, end)
+
+        return res.json(selectedFans)
+    } catch (error) {
+        console.error(error)
+        return res.json(error)
+    }
 })
 
 app.post("/fan", async (req, res) => {
