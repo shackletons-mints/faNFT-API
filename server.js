@@ -32,6 +32,7 @@ app.get('/get-fan', async (req, res) => {
         return res.json(result)
     } catch (error) {
         console.error(error)
+        return res.json(error)
     }
 })
 
@@ -50,38 +51,27 @@ app.get('/get-paginated-fans', async (req, res) => {
     }
 })
 
-app.post("/fan", async (req, res) => {
+app.put("/put-fan", async (req, res) => {
     try {
         const { payload } = req.body
-        const { cid, title } = JSON.parse(payload)
-
-        const result = await Fan.create({
-            cid,
-            title,
-            owner: null,
-        })
-
-        return res.json(result)
-    } catch (error) {
-        console.error(error)
-    }
-})
-
-app.put("/fan", async (req, res) => {
-    try {
-        const { payload } = req.body
-        const { cid, ownerAddress } = JSON.parse(payload)
+        const { uri, owner } = payload
 
         const result = await Fan.findOneAndUpdate(
-            { cid },
-            { $set: { owner: ownerAddress }}
+            { uri },
+            { $set: { owner: owner }}
         ).exec()
   
       return res.json(result)
     } catch (error) {
       console.error(error)
+      return res.json(error)
     }
 })
+
+// payload = {
+//     uri: "https://bafybeiad4cjnorjvotfqx737c2aha2fuvg2rfo6bznio22vbw6iyuyqs7y.ipfs.nftstorage.link/0000000000000000000000000000000000000000000000000000000000000001.json",
+//     owner: "0xEB1e4Ff457D42B795edF00333Bb1d519fb423a72"
+// }
 
 app.post('/test', (req, res, next) => {
     const { payload } = req.body
