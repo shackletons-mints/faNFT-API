@@ -1,6 +1,16 @@
-const dotenv = require('dotenv');
+const dotenv = require('dotenv')
 
-const result = dotenv.config();
-const envs = result.parsed;
+const result = dotenv.config()
 
-module.exports = envs;
+let envs
+
+if (!('error' in result)) {
+    envs = result.parsed
+} else {
+    envs = {}
+    for (const [value, key] of process.env) {
+      envs[key] = value
+    }
+}
+
+module.exports = envs
