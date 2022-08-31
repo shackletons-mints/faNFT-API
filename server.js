@@ -66,8 +66,8 @@ app.put("/put-fan", async (req, res) => {
     }
 })
 
-app.listen(PORT, () =>  {
-    console.log('Listening on port ' + PORT)
+app.listen(process.env.PORT, () =>  {
+    console.log('Listening on port ' + process.env.PORT)
 })
 
 // TEST PAYLOAD
