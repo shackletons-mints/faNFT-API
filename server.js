@@ -1,10 +1,10 @@
+import { PORT } from './config'
+
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const Fan = require('./db/models/fanModel')
-
 const db = require('./db')
-require('dotenv').config()
 
 const app = express()
 
@@ -66,8 +66,8 @@ app.put("/put-fan", async (req, res) => {
     }
 })
 
-app.listen(process.env.PORT, () =>  {
-    console.log('Listening on port ' + process.env.PORT)
+app.listen(PORT, () =>  {
+    console.log('Listening on port ' + PORT)
 })
 
 // TEST PAYLOAD
