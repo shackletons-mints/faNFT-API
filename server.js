@@ -6,8 +6,6 @@ const Fan = require('./db/models/fanModel')
 const db = require('./db')
 require('dotenv').config()
 
-const PORT = 8080
-
 const app = express()
 
 // MIDDLEWARE
@@ -60,7 +58,7 @@ app.put("/put-fan", async (req, res) => {
             { uri },
             { $set: { owner: owner }}
         ).exec()
-  
+
       return res.json(result)
     } catch (error) {
       console.error(error)
@@ -68,8 +66,8 @@ app.put("/put-fan", async (req, res) => {
     }
 })
 
-app.listen(PORT, () =>  {
-    console.log('Listening on port ' + PORT)
+app.listen(process.env.PORT, () =>  {
+    console.log('Listening on port ' + process.env.PORT)
 })
 
 // TEST PAYLOAD
