@@ -1,4 +1,4 @@
-import { PORT } from './config'
+const { MONGO_URI } = require('../config.js')
 
 const mongoose = require("mongoose")
 

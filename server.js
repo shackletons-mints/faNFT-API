@@ -1,4 +1,4 @@
-import { PORT } from './config'
+const { PORT } = require('./config.js')
 
 const express = require('express')
 const cors = require('cors')
